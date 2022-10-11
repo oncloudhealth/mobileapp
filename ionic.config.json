@@ -1,0 +1,7 @@
+{
+  "name": "OnCloud",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
