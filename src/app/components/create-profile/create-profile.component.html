@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate id="form">
+    <ion-item fill="solid">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input [clearInput]="true" type="text" name="firstName" ngModel required #firstName="ngModel"></ion-input>
+      <ion-note slot="helper">Enter a first name</ion-note>
+      <ion-note slot="error">Invalid first name</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input [clearInput]="true" type="text" name="lastName" ngModel required #lastName="ngModel"></ion-input>
+      <ion-note slot="helper">Enter a last name</ion-note>
+      <ion-note slot="error">Invalid last name</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Last 4 SSN</ion-label>
+      <ion-input [clearInput]="true" type="number" name="last4SSN" ngModel required #last4SSN="ngModel"></ion-input>
+      <ion-note slot="helper">Enter last 4 SSN</ion-note>
+      <ion-note slot="error">Invalid last 4 SSN</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Gender</ion-label>
+      <ion-select interface="action-sheet" okText="Select" cancelText="Cancel">
+        <ion-select-option value="male">Male</ion-select-option>
+        <ion-select-option value="female">Female</ion-select-option>
+      </ion-select>
+      <ion-note slot="helper">Select gender</ion-note>
+      <ion-note slot="error">Invalid gender</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Birthday</ion-label>
+      <ion-input [clearInput]="true" placeholder="" type="date" name="birthday" ngModel date required #birthday="ngModel">
+      </ion-input>
+      <ion-note slot="helper">Enter birth date</ion-note>
+      <ion-note slot="error">Invalid birth date</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
+      <ion-note slot="helper">Enter a valid email</ion-note>
+      <ion-note slot="error">Invalid email</ion-note>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input [clearInput]="true" type="phone" name="phone" ngModel required #phone="ngModel"></ion-input>
+      <ion-note slot="helper">Enter a valid phone</ion-note>
+      <ion-note slot="error">Invalid phone</ion-note>
+    </ion-item>
+  </form>
+</ion-content>
+<ion-footer class="ion-padding">
+  <ion-button expand="block" type="submit" form="form" class="ion-no-margin">
+    Create
+    <ion-icon slot="end" name="star"></ion-icon>
+  </ion-button>
+</ion-footer>
