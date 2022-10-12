@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CreateProfileComponent } from '../components/create-profile/create-profile.component';
 import { ForgotPasswordComponent } from '../components/forgot-password/forgot-password.component';
@@ -11,7 +12,7 @@ import { SignupComponent } from '../components/signup/signup.component';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,7 @@ export class LoginPage implements OnInit {
   onLogin(f: NgForm) {
     console.log(f.value);
     // calll this for first time logged in
-    // this.openModalCreateProfile();
+    this.openModalCreateProfile();
   }
 
   async openModalSignup() {
@@ -48,7 +49,8 @@ export class LoginPage implements OnInit {
 
     if (role === 'confirm') {
       console.log(data);
-      // redirect to home
+      // redirect to either agency selection or homepage
+      this.router.navigate(['/agency-selection'])
     }
   }
 

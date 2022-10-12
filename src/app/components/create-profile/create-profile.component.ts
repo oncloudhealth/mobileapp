@@ -19,7 +19,7 @@ export class CreateProfileComponent implements OnInit {
 
   async onSubmit(f: NgForm) {
     const alert = await this.alertController.create({
-      message: 'Create profile successfull! You should receive an email shortly with further instructions on how to use the app.',
+      message: `You have been registered successfully. Your Mobile ID Number is ${f.value.phone} and a copy has been emailed to you. This number should be provided to your agency in order to be linked with them.`,
       backdropDismiss: false,
       buttons: [{
         text: 'OK',
