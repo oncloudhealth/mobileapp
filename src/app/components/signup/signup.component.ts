@@ -25,9 +25,7 @@ export class SignupComponent implements OnInit {
       buttons: [{
         text: 'OK',
         role: 'confirm',
-        handler: () => {
-          return this.modalCtrl.dismiss(f.value, 'confirm');
-        },
+        handler: () => this.modalCtrl.dismiss(f.value, 'confirm'),
       }],
     });
 

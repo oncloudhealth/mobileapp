@@ -19,14 +19,13 @@ export class CreateProfileComponent implements OnInit {
 
   async onSubmit(f: NgForm) {
     const alert = await this.alertController.create({
-      message: `You have been registered successfully. Your Mobile ID Number is ${f.value.phone} and a copy has been emailed to you. This number should be provided to your agency in order to be linked with them.`,
+      message: `You have been registered successfully. Your Mobile ID Number is ${f.value.phone}
+        and a copy has been emailed to you. This number should be provided to your agency in order to be linked with them.`,
       backdropDismiss: false,
       buttons: [{
         text: 'OK',
         role: 'confirm',
-        handler: () => {
-          return this.modalCtrl.dismiss(f.value, 'confirm');
-        },
+        handler: () => this.modalCtrl.dismiss(f.value, 'confirm'),
       }],
     });
 

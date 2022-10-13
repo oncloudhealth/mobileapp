@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
     if (role === 'confirm') {
       console.log(data);
       // redirect to either agency selection or homepage
-      this.router.navigate(['/agency-selection'])
+      this.router.navigate(['/agency-selection']);
     }
   }
 
