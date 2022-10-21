@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'homepage/:id',
     loadChildren: () => import('./homepage/homepage.module').then( m => m.HomepagePageModule)
+  },
+  {
+    path: 'movies',
+    loadChildren: () => import('./movies/movies.module').then( m => m.MoviesPageModule)
   }
 ];
 @NgModule({

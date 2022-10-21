@@ -1,40 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
+<ion-content class="ion-padding-top" fullscreen="true">
   <form #f="ngForm" (ngSubmit)="onLogin(f)" novalidate>
-    <ion-item fill="solid">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
+    <div class="ion-padding ion-margin-vertical">
+      <ion-text color="medium" class="form-title">Sign In</ion-text>
+    </div>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
       <ion-note slot="helper">Enter a valid email</ion-note>
       <ion-note slot="error">Invalid email</ion-note>
     </ion-item>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Password (at leat 8 characters)" [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
       </ion-input>
       <ion-note slot="helper">Enter a password</ion-note>
       <ion-note slot="error">Invalid password</ion-note>
     </ion-item>
 
     <div class="ion-padding">
-      <ion-button (click)="openModalForgotPassword()" fill="clear" size="small" class="ion-no-padding">Forgot password?
-      </ion-button>
+      <ion-button [disabled]="f.invalid" shape="round" expand="block" type="submit" color="primary">Sign in</ion-button>
     </div>
 
-    <div class="ion-padding-horizontal">
-      <ion-button expand="block" type="submit">
-        Login
-        <ion-icon slot="end" name="star"></ion-icon>
-      </ion-button>
+    <div class="ion-text-center">
+      <ion-button (click)="openModalForgotPassword()" fill="clear" class="ion-no-padding">Forgot password?</ion-button>
+
+      <div class="btn-signup">Don't have an account? <ion-text color="primary" (click)="openModalSignup()">Sign Up</ion-text></div>
     </div>
   </form>
 </ion-content>
-
-<ion-footer>
-  <ion-button (click)="openModalSignup()" expand="full" color="secondary" class="ion-no-margin">Sign Up</ion-button>
-</ion-footer>

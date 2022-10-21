@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Sign Up</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
@@ -8,33 +7,31 @@
 </ion-header>
 <ion-content>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate id="signup">
-    <ion-item fill="solid">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
+    <div class="ion-padding ion-margin-vertical">
+      <ion-text color="medium" class="form-title">Sign Up</ion-text>
+    </div>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
       <ion-note slot="helper">Enter a valid email</ion-note>
       <ion-note slot="error">Invalid email</ion-note>
     </ion-item>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">New Password</ion-label>
-      <ion-input [clearInput]="true" type="password" name="password" ngModel password required #newPassword="ngModel">
-      </ion-input>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Password (at leat 8 characters)" [clearInput]="true" type="password" name="password" ngModel password required #newPassword="ngModel"></ion-input>
       <ion-note slot="helper">Enter a password</ion-note>
       <ion-note slot="error">Invalid password</ion-note>
     </ion-item>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Confirm Password</ion-label>
-      <ion-input [clearInput]="true" type="password" name="password" ngModel password required #rePassword="ngModel">
-      </ion-input>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Re-type Password" [clearInput]="true" type="password" name="password" ngModel password required #rePassword="ngModel"></ion-input>
       <ion-note slot="helper">Enter confirmation password</ion-note>
       <ion-note slot="error">Invalid password</ion-note>
     </ion-item>
+
+    <div class="ion-text-center ion-padding">
+      <ion-button [disabled]="f.invalid" shape="round" color="primary" expand="block" type="submit" form="signup" class="ion-no-padding">Sign Up</ion-button>
+
+      <div class="btn-signup">Already have an account? <ion-text color="primary">Sign In</ion-text></div>
+    </div>
   </form>
 </ion-content>
-<ion-footer class="ion-padding">
-  <ion-button expand="block" type="submit" form="signup" class="ion-no-margin">
-    Sign Up
-    <ion-icon slot="end" name="star"></ion-icon>
-  </ion-button>
-</ion-footer>

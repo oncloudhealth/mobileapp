@@ -1,0 +1,23 @@
+<ion-header collapse="fade" translucent="true">
+  <ion-toolbar>
+    <ion-title>Popular Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true" scroll-y="false">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Popular Movies</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item lines="inset" detail="true" *ngFor="let x of movies; let i = index" router-direction="forward" [routerLink]="'/movies/' + i">
+      <ion-thumbnail slot="start">
+        <img [src]="'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + x.poster_path">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{x.title}}</h2>
+        <p>{{x.tagline}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
