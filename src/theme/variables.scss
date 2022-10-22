@@ -10,23 +10,26 @@
   --ion-font-family: "Rubik", sans-serif;
   --ion-text-color: var(--ion-color-medium);
 
-  ion-input {
+  ion-input, ion-select {
+    background-color: #f4f6fa;
     --background: #f4f6fa;
     --padding-start: 18px !important;
     --padding-end: 18px;
     border-radius: 8px;
     height: 49px;
+    flex: 1;
   }
 
   form {
-    ion-item {
+    ion-item, ion-select {
       --padding-end: 20px;
     }
+  }
 
-    .form-title {
-      font-weight: 700;
-      font-size: 34px;
-    }
+  h1{
+    font-weight: 700;
+    font-size: 34px;
+    color: var(--ion-color-medium);
   }
 
   --ion-color-primary: #1990f3;
