@@ -5,14 +5,17 @@
     </div>
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
-      <ion-note slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">Invalid email</ion-note>
+      <ion-note slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">
+        <span *ngIf="email.errors?.['required']">Email is required</span>
+        <span *ngIf="email.errors?.['email']">Email is invalid</span>
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Password (at leat 8 characters)" minlength="8" [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
       </ion-input>
       <ion-note slot="error" *ngIf="password.invalid && (password.dirty || password.touched)">
-        <span *ngIf="password.errors?.['required']">Invalid password</span>
+        <span *ngIf="password.errors?.['required']">Password is required</span>
         <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long</span>
       </ion-note>
     </ion-item>

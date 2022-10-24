@@ -4,13 +4,19 @@
       <h1>Create Profile</h1>
     </div>
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="First name" [clearInput]="true" type="text" name="firstName" ngModel required #firstName="ngModel"></ion-input>
-      <ion-note slot="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">Invalid first name</ion-note>
+      <ion-input placeholder="First name" [clearInput]="true" type="text" name="firstName" minlength="3" ngModel required #firstName="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+        <span *ngIf="firstName.errors?.['required']">First name is required</span>
+        <span *ngIf="last4SSN.errors?.['minlength']">First name must be at least 3 characters long</span>
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Last name" [clearInput]="true" type="text" name="lastName" ngModel required #lastName="ngModel"></ion-input>
-      <ion-note slot="error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Invalid last name</ion-note>
+      <ion-input placeholder="Last name" [clearInput]="true" type="text" name="lastName" minlength="3" ngModel required #lastName="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+        <span *ngIf="lastName.errors?.['required']">Last name is required</span>
+        <span *ngIf="last4SSN.errors?.['minlength']">Last name must be at least 3 characters long</span>
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
@@ -26,23 +32,24 @@
         <ion-select-option value="male">Male</ion-select-option>
         <ion-select-option value="female">Female</ion-select-option>
       </ion-select>
-      <ion-note slot="error" *ngIf="gender.invalid && (gender.dirty || gender.touched)">Invalid gender</ion-note>
+      <ion-note slot="error" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+        <span *ngIf="gender.errors?.['required']">Gender is required</span>
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Date" type="date" name="birthday" ngModel date required #birthday="ngModel">
       </ion-input>
-      <ion-note slot="error" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">Invalid birth date</ion-note>
-    </ion-item>
-
-    <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
-      <ion-note slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">Invalid email</ion-note>
+      <ion-note slot="error" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">
+        <span *ngIf="birthday.errors?.['required']">Birthday is required</span>
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Phone" [clearInput]="true" type="phone" name="phone" ngModel phone required #phone="ngModel"></ion-input>
-      <ion-note slot="error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">Invalid phone</ion-note>
+      <ion-note slot="error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+        <span *ngIf="phone.errors?.['required']">Phone is required</span>
+      </ion-note>
     </ion-item>
   </form>
 </ion-content>
