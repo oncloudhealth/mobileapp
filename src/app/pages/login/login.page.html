@@ -1,5 +1,5 @@
 <ion-content class="ion-padding-top" fullscreen="true">
-  <form #f="ngForm" (ngSubmit)="onLogin(f)" novalidate>
+  <form #f="ngForm" (ngSubmit)="f.valid && onLogin(f)" novalidate>
     <div class="ion-padding ion-margin-top">
       <h1>Sign In</h1>
     </div>
@@ -12,11 +12,12 @@
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Password (at leat 8 characters)" minlength="8" [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
+      <ion-input placeholder="Password (at leat 8 characters)" minlength="8" maxlength="40" [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
       </ion-input>
       <ion-note slot="error" *ngIf="password.invalid && (password.dirty || password.touched)">
         <span *ngIf="password.errors?.['required']">Password is required</span>
         <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long</span>
+        <span *ngIf="password.errors?.['maxlength']">Password must not exceed 40 characters</span>
       </ion-note>
     </ion-item>
 

@@ -1,5 +1,5 @@
 <ion-content class="ion-padding-top" fullscreen="true">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate id="signup">
+  <form #f="ngForm" (ngSubmit)="f.valid && onSubmit(f)" novalidate [appMatchPassword]="['password', 'confirmPassword']" id="signup" name="signup">
     <div class="ion-padding ion-margin-top">
       <h1>Sign Up</h1>
     </div>
@@ -7,20 +7,25 @@
       <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
       <ion-note slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">
         <span *ngIf="email.errors?.['required']">Email is required</span>
+        <span *ngIf="email.errors?.['email']">Email is invalid</span>
       </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Password (at leat 8 characters)" minlength="8" [clearInput]="true" type="password" name="password" ngModel password required #newPassword="ngModel"></ion-input>
+      <ion-input placeholder="Password (at leat 8 characters)" minlength="8" maxlength="40" [clearInput]="true" type="password" name="password" ngModel required #password="ngModel"></ion-input>
       <ion-note slot="error" *ngIf="password.invalid && (password.dirty || password.touched)">
         <span *ngIf="password.errors?.['required']">Password is required</span>
         <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long</span>
+        <span *ngIf="password.errors?.['maxlength']">Password must not exceed 40 characters</span>
       </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Re-type Password" [clearInput]="true" type="password" name="rePassword" ngModel password required #rePassword="ngModel"></ion-input>
-      <ion-note slot="error" *ngIf="password.value !== rePassword.value && (rePassword.dirty || rePassword.touched)">Invalid password confirmation</ion-note>
+      <ion-input placeholder="Re-type Password" [clearInput]="true" type="password" name="confirmPassword" ngModel required #confirmPassword="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+        <span *ngIf="confirmPassword.errors?.['required']">Password is required</span>
+        <span *ngIf="confirmPassword.errors?.['matching']">Invalid password confirmation</span>
+      </ion-note>
     </ion-item>
 
     <div class="ion-text-center ion-padding">
