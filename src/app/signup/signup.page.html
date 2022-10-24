@@ -1,0 +1,30 @@
+<ion-content class="ion-padding-top" fullscreen="true">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate id="signup">
+    <div class="ion-padding ion-margin-top">
+      <h1>Sign Up</h1>
+    </div>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="name.invalid && (name.dirty || name.touched)">Invalid email</ion-note>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Password (at leat 8 characters)" minlength="8" [clearInput]="true" type="password" name="password" ngModel password required #newPassword="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+        <span *ngIf="password.errors?.['required']">Invalid password</span>
+        <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long</span>
+      </ion-note>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-margin-bottom">
+      <ion-input placeholder="Re-type Password" [clearInput]="true" type="password" name="rePassword" ngModel password required #rePassword="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="password.value !== rePassword.value && (rePassword.dirty || rePassword.touched)">Invalid password confirmation</ion-note>
+    </ion-item>
+
+    <div class="ion-text-center ion-padding">
+      <ion-button [disabled]="f.invalid" shape="round" color="primary" expand="block" type="submit" form="signup" class="ion-no-padding">Sign Up</ion-button>
+
+      <div class="btn-signup">Already have an account? <ion-text color="primary" (click)="navController.pop()">Sign In</ion-text></div>
+    </div>
+  </form>
+</ion-content>

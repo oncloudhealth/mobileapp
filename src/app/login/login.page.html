@@ -5,15 +5,16 @@
     </div>
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
-      <ion-note slot="helper">Enter a valid email</ion-note>
-      <ion-note slot="error">Invalid email</ion-note>
+      <ion-note slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">Invalid email</ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Password (at leat 8 characters)" [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
+      <ion-input placeholder="Password (at leat 8 characters)" minlength="8" [clearInput]="true" type="password" name="password" ngModel password required #password="ngModel">
       </ion-input>
-      <ion-note slot="helper">Enter a password</ion-note>
-      <ion-note slot="error">Invalid password</ion-note>
+      <ion-note slot="error" *ngIf="password.invalid && (password.dirty || password.touched)">
+        <span *ngIf="password.errors?.['required']">Invalid password</span>
+        <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long</span>
+      </ion-note>
     </ion-item>
 
     <div class="ion-padding">
@@ -21,9 +22,9 @@
     </div>
 
     <div class="ion-text-center">
-      <ion-button (click)="openModalForgotPassword()" fill="clear" class="ion-no-padding">Forgot password?</ion-button>
+      <ion-button routerLink="/forgot-password" fill="clear" class="ion-no-padding">Forgot password?</ion-button>
 
-      <div class="btn-signup">Don't have an account? <ion-text color="primary" (click)="openModalSignup()">Sign Up</ion-text></div>
+      <div class="btn-signup">Don't have an account? <ion-text color="primary" routerLink="/signup">Sign Up</ion-text></div>
     </div>
   </form>
 </ion-content>

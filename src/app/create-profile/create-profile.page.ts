@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-profile',
-  templateUrl: './create-profile.component.html',
-  styleUrls: ['./create-profile.component.scss'],
+  templateUrl: './create-profile.page.html',
+  styleUrls: ['./create-profile.page.scss'],
 })
-export class CreateProfileComponent implements OnInit {
+export class CreateProfilePage implements OnInit {
 
-  constructor(private modalCtrl: ModalController, private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private navController: NavController) { }
 
-  ngOnInit() {}
-
-  cancel() {
-    return this.modalCtrl.dismiss(null, 'cancel');
+  ngOnInit() {
   }
 
   async onSubmit(f: NgForm) {
@@ -25,7 +23,10 @@ export class CreateProfileComponent implements OnInit {
       buttons: [{
         text: 'OK',
         role: 'confirm',
-        handler: () => this.modalCtrl.dismiss(f.value, 'confirm'),
+        handler: () => {
+          console.log(f.value);
+          this.navController.navigateRoot('/agency-selection');
+        },
       }],
     });
 

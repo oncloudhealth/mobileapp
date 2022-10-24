@@ -1,0 +1,44 @@
+ion-radio {
+  width: 24px;
+  height: 24px;
+}
+
+ion-radio::part(container) {
+  border-radius: 50%;
+  border: 1px solid #adadad;
+}
+
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+}
+
+ion-radio.radio-checked::part(container) {
+  background: #25a856;
+  border-color: transparent;
+}
+
+ion-radio.radio-checked::part(mark) {
+  width: 6px;
+  height: 10px;
+
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: #fff;
+
+  transform: rotate(45deg);
+}
+
+ion-item {
+    --background: rgba(239, 239, 244, 0.5);
+    --border-radius: 8px;
+
+    ion-label{
+        white-space: normal;
+        line-height: 24px;
+        height: 60px;
+        display: flex;
+    }
+}

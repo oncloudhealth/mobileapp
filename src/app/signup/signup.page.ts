@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
-export class SignupComponent implements OnInit {
+export class SignupPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController, private alertController: AlertController) { }
+  constructor(private alertController: AlertController, public navController: NavController) { }
 
   ngOnInit() {
-  }
-
-  cancel() {
-    return this.modalCtrl.dismiss(null, 'cancel');
   }
 
   async onSubmit(f: NgForm) {
@@ -24,13 +20,11 @@ export class SignupComponent implements OnInit {
       backdropDismiss: false,
       buttons: [{
         text: 'OK',
-        role: 'confirm',
-        handler: () => this.modalCtrl.dismiss(f.value, 'confirm'),
+        role: 'confirm'
       }],
     });
 
     await alert.present();
   }
-
 
 }

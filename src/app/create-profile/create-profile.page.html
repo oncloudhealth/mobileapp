@@ -1,59 +1,48 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
+<ion-content class="ion-padding-top" fullscreen="true">
   <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate id="form">
     <div class="ion-padding ion-margin-top">
       <h1>Create Profile</h1>
     </div>
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="First name" [clearInput]="true" type="text" name="firstName" ngModel required #firstName="ngModel"></ion-input>
-      <ion-note slot="helper">Enter a first name</ion-note>
-      <ion-note slot="error">Invalid first name</ion-note>
+      <ion-note slot="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">Invalid first name</ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Last name" [clearInput]="true" type="text" name="lastName" ngModel required #lastName="ngModel"></ion-input>
-      <ion-note slot="helper">Enter a last name</ion-note>
-      <ion-note slot="error">Invalid last name</ion-note>
+      <ion-note slot="error" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">Invalid last name</ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-input placeholder="Last 4 SSN" [clearInput]="true" type="number" name="last4SSN" ngModel required #last4SSN="ngModel"></ion-input>
-      <ion-note slot="helper">Enter last 4 SSN</ion-note>
-      <ion-note slot="error">Invalid last 4 SSN</ion-note>
+      <ion-input placeholder="Last 4 SSN" [clearInput]="true" type="number" pattern="[0-9]{4}" name="last4SSN" ngModel required #last4SSN="ngModel"></ion-input>
+      <ion-note slot="error" *ngIf="last4SSN.invalid && (last4SSN.dirty || last4SSN.touched)">
+        <span *ngIf="last4SSN.errors?.['required']">Last 4 SSN is required</span>
+        <span *ngIf="last4SSN.errors?.['pattern']">SSN must be 4 characters long</span>
+      </ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
-      <ion-select placeholder="Gender" interface="action-sheet" okText="Select" cancelText="Cancel">
+      <ion-select placeholder="Gender" interface="action-sheet" okText="Select" cancelText="Cancel" name="gender" ngModel required #gender="ngModel">
         <ion-select-option value="male">Male</ion-select-option>
         <ion-select-option value="female">Female</ion-select-option>
       </ion-select>
-      <ion-note slot="helper">Select gender</ion-note>
-      <ion-note slot="error">Invalid gender</ion-note>
+      <ion-note slot="error" *ngIf="gender.invalid && (gender.dirty || gender.touched)">Invalid gender</ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Date" type="date" name="birthday" ngModel date required #birthday="ngModel">
       </ion-input>
-      <ion-note slot="helper">Enter birth date</ion-note>
-      <ion-note slot="error">Invalid birth date</ion-note>
+      <ion-note slot="error" *ngIf="birthday.invalid && (birthday.dirty || birthday.touched)">Invalid birth date</ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Email" [clearInput]="true" type="email" name="email" ngModel email required #email="ngModel"></ion-input>
-      <ion-note slot="helper">Enter a valid email</ion-note>
-      <ion-note slot="error">Invalid email</ion-note>
+      <ion-note slot="error" *ngIf="email.invalid && (email.dirty || email.touched)">Invalid email</ion-note>
     </ion-item>
 
     <ion-item lines="none" class="ion-margin-bottom">
       <ion-input placeholder="Phone" [clearInput]="true" type="phone" name="phone" ngModel phone required #phone="ngModel"></ion-input>
-      <ion-note slot="helper">Enter a valid phone</ion-note>
-      <ion-note slot="error">Invalid phone</ion-note>
+      <ion-note slot="error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">Invalid phone</ion-note>
     </ion-item>
   </form>
 </ion-content>
