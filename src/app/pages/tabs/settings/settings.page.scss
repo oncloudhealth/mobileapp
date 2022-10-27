@@ -1,0 +1,41 @@
+ion-toolbar {
+    margin-bottom: -1px;
+    
+    h4 {
+        font-weight: 600;
+        margin-top: 50px;
+    }
+}
+
+ion-content {
+    --background: rgba(239, 239, 244, 0.5);
+}
+
+ion-list {
+    background: none;
+
+    ion-list-header{
+        background: white;
+        border-radius: 8px 8px 0 0;
+
+        ion-label{
+            font-size: 15px;
+            color: #6D6D88;
+        }
+    }
+
+    ion-item {
+        background: none;
+
+        ion-label{
+            white-space: normal;
+            display: flex;
+            font-size: 16px;
+            color: #232540;
+        }
+    }
+
+    ion-item:last-child{
+        --border-radius: 0 0 8px 8px;
+    }
+}
