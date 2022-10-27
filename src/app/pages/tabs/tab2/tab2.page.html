@@ -1,17 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<ion-header color="primary" class="ion-no-border">
+  <ion-toolbar color="primary" class="ion-justify-content-between">
+    <h4 class="ion-no-margin ion-padding-horizontal">Messages</h4>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="end" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+  <ion-list inset="true" class="ion-margin-vertical">
+    <ion-item detail="true" *ngFor="let x of [0,1,2,3,4,5,6,7,8,9]">
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+      </ion-avatar>
+      <ion-label>
+        <div class="ion-justify-content-between">
+          <h3>Daniel Potocki</h3>
+          <ion-text>07/12 8:00 AM</ion-text>
+        </div>
+        <div class="ion-justify-content-between">
+          <div class="summary ion-text-wrap">Advanced services training enrollment now opt...</div>
+          <div class="chip  ion-margin-start">11</div>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
